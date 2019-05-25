@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="frctol"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/rkeli/Desktop/frctol/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/rkeli/Desktop/frctol/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/rkeli/Desktop/frctol/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/rkeli/Desktop/frctol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/rkeli/Desktop/frctol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/rkeli/Desktop/frctol/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/rkeli/Desktop/frctol/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/rkeli/Desktop/frctol/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/rkeli/Desktop/frctol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/rkeli/Desktop/frctol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/rkeli/Desktop/frctol/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/rkeli/Desktop/frctol/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/rkeli/Desktop/frctol/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/rkeli/Desktop/frctol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/rkeli/Desktop/frctol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="frctol">
+				<Option output="/Users/rkeli/Desktop/frctol/cmake-build-debug/frctol" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/rkeli/Desktop/frctol/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/rkeli/Desktop/frctol/libft"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/rkeli/Desktop/frctol/cmake-build-debug/Makefile&quot;  VERBOSE=1 frctol"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/rkeli/Desktop/frctol/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/rkeli/Desktop/frctol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/rkeli/Desktop/frctol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="frctol/fast">
+				<Option output="/Users/rkeli/Desktop/frctol/cmake-build-debug/frctol" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/rkeli/Desktop/frctol/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/rkeli/Desktop/frctol/libft"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/rkeli/Desktop/frctol/cmake-build-debug/Makefile&quot;  VERBOSE=1 frctol/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/rkeli/Desktop/frctol/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/rkeli/Desktop/frctol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/rkeli/Desktop/frctol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/rkeli/Desktop/frctol/fractol.h">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_abs.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_atoi.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_atoi_base.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_bzero.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_isalnum.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_isalpha.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_isascii.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_isdigit.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_isprint.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_itoa.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_lstadd.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_lstdel.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_lstdelone.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_lstiter.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_lstmap.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_lstnew.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_lstnormdel.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_lstnormdelone.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_memalloc.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_memccpy.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_memchr.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_memcmp.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_memcpy.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_memdel.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_memmove.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_memset.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_putchar.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_putchar_fd.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_putendl.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_putendl_fd.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_putnbr.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_putnbr_fd.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_putstr.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_putstr_fd.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_sort_bubl.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strcat.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strchr.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strclr.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strcmp.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strcpy.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strdel.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strdup.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strequ.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_striter.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_striteri.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strjoin.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strlcat.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strlen.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strmap.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strmapi.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strncat.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strncmp.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strncpy.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strnequ.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strnew.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strnstr.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strrchr.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strsplit.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strstr.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strsub.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_strtrim.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_swap.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_tolower.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_toupper.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/ft_updt.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/get_next_line.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/get_next_line.h">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/libft/libft.h">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/main.c">
+			<Option target="frctol"/>
+		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/frctol/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
