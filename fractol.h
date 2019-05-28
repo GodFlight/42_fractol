@@ -6,7 +6,7 @@
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 15:16:27 by rkeli             #+#    #+#             */
-/*   Updated: 2019/05/25 14:14:04 by rkeli            ###   ########.fr       */
+/*   Updated: 2019/05/27 16:53:12 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <stdlib.h>
 //# include <stdio.h>
 # include <complex.h>
-# define DEG2RAD M_PI / 180
 # define HEIGHT 1315
 # define WIDTH 2560
 
@@ -38,6 +37,7 @@ typedef enum
 	ROTATE_LEFT = 86,
 	ROTATE = 65,
 	RESET = 15,
+	JUMP = 38,
 	ITERATE_PLUS = 67,
 	ITERATE_MUNIS = 75
 }	t_keycode;
@@ -56,18 +56,23 @@ typedef struct 		s_fractol_calc
 	int			x;
 	int			y;
 	int			it;
-	double		c_r;
-	double		c_i;
-	double		z_r;
-	double		z_i;
+	long double		c_r;
+	long double		c_i;
+	long double		z_r;
+	long double		z_i;
 }					t_fractol_calc;
 
 typedef struct 		s_event
 {
-	double			mouse_move;
-	double 			zoom;
-	int 			color;
-	int 			it_max;
+	long double			mouse_move;
+	long double 			zoom;
+	int 					color;
+	int 					it_max;
+	int 					plus_it;
+	long double				mve_horiz;
+	long double 			mve_vertic;
+	long double 			horiz;
+	long double 			vertic;
 }					t_event;
 
 typedef struct 		s_fractol
@@ -77,19 +82,21 @@ typedef struct 		s_fractol
 	t_event			event;
 	void			*mlx;
 	void			*win;
+	int 			flg;
+	int 			jflg;
 }					t_fractol;
 
 void			put_pixel_img(int x, int y, t_fractol *fractol, int color);
 void			fractol_init(t_fractol *fractol);
 void			img_init(t_fractol *fractol);
 void			mandelbrot(t_fractol *fractol);
+void			carpet(t_fractol *fractol);
+void			burningship(t_fractol *fractol);
 void			julia(t_fractol *fractol);
-void			burningship_calc(t_fractol *fractol);
-void			mandelbrot_calc(t_fractol *fractol);
-void			carpet_calc(t_fractol *fractol);
+void			render(t_fractol *fractol);
 int				ft_rgb_to_hex(int r, int g, int b);
 int				ft_close(void *param);
 int 			key_event(int keycode, void *param);
-int 			mouse_move_event(int mousecode, int x, int y, t_fractol *fractol);
+void 			mouse_move_event(int mousecode, int x, int y, t_fractol *fractol);
 
 #endif

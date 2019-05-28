@@ -34,9 +34,7 @@ stdlib.h
 get_next_line.h
 /Users/rkeli/Desktop/fractol/libft/get_next_line.h
 
-/Users/rkeli/Desktop/fractol/mandelbrot.c
+/Users/rkeli/Desktop/fractol/main.c
 fractol.h
 /Users/rkeli/Desktop/fractol/fractol.h
-stdio.h
--
 

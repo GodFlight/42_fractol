@@ -6,18 +6,26 @@
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/07 17:18:46 by rkeli             #+#    #+#             */
-/*   Updated: 2019/05/24 12:37:43 by rkeli            ###   ########.fr       */
+/*   Updated: 2019/05/27 21:39:01 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <stdio.h>
 
-void	re_render(t_fractol *fractol)
+void	render(t_fractol *fractol)
 {
+
 	ft_bzero(fractol->img.data, fractol->img.line_size * HEIGHT);
 	mlx_clear_window(fractol->mlx, fractol->win);
-	mandelbrot(fractol);
+	if (fractol->flg == 1)
+		mandelbrot(fractol);
+	else if (fractol->flg == 2)
+		julia(fractol);
+	else if (fractol->flg == 3)
+		carpet(fractol);
+	else
+		burningship(fractol);
 }
 
 int		ft_close(void *param)
@@ -36,32 +44,58 @@ int 	key_event(int keycode, void *param)
 		exit (0);
 	if (keycode == ZOOM_INTO)
 	{
-		fractol->event.zoom += 0.005;
-		re_render(fractol);
+		fractol->event.zoom > 0 ? fractol->event.zoom -= 0.5 : 1;
+		fractol->event.plus_it -= 1;
 	}
 	if (keycode == ZOOM_OUT)
 	{
-		fractol->event.zoom -= 0.005;
-		re_render(fractol);
+		fractol->event.zoom += 0.5;
+		fractol->event.plus_it += 1;
 	}
 	if (keycode == ITERATE_PLUS)
-	{
 		(fractol->event.it_max) + 10 == 150 ? 1 : (fractol->event.it_max += 10);
-		(fractol->event.it_max) += 10;
-		re_render(fractol);
-	}
 	if (keycode == ITERATE_MUNIS)
-	{
 		(fractol->event.it_max) - 10 == 0 ? 1 : (fractol->event.it_max -= 10);
-		re_render(fractol);
+	if (keycode == UP)
+	{
+		fractol->event.vertic += 0.00000005;
+		printf("vertic: %.20Lf\n", fractol->event.mve_vertic);
 	}
+	if (keycode == DOWN)
+	{
+		fractol->event.vertic -= 0.00000005;
+		printf("vertic: %.20Lf\n", fractol->event.mve_vertic);
+	}
+	if (keycode == RIGHT)
+	{
+		fractol->event.horiz -= 0.00000005;
+		printf("horiz: %.20Lf\n", fractol->event.mve_horiz);
+	}
+	if (keycode == LEFT)
+	{
+		fractol->event.horiz += 0.00000005;
+		printf("horiz: %.20Lf\n", fractol->event.mve_vertic);
+	}
+	if (keycode == JUMP)
+		fractol->jflg + 1 < 3 ? fractol->jflg += 1 : 1;
+	render(fractol);
 }
 
-int 	mouse_move_event(int mousecode, int x, int y, t_fractol *fractol)
-{/*
-	if (mousecode == 4)
-		(fractol->event.mouse_move) += 0.1;
-	else if (mousecode == 5)
-		(fractol->event.mouse_move) -= 0.1;
-	re_render(fractol);*/
+void 	mouse_move_event(int mousecode, int x, int y, t_fractol *fractol)
+{
+//	if (mousecode == 4)
+//		(fractol->event.mouse_move) += 0.1;
+//	else if (mousecode == 5)
+//		(fractol->event.mouse_move) -= 0.1;
+//	re_render(fractol);
+
 }
+
+//void 	jump_mandelbrot(int keycode, void * param)
+//{
+//	t_fractol *fractol;
+//
+//	fractol = (t_fractol *)param;
+//	if (keycode == JUMP)
+//		fractol->flg + 1 > 3 ? fractol->flg += 1 : fractol->flg == 0;
+//}
