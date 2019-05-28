@@ -299,3 +299,9 @@ CMakeFiles/fractol.dir/mandelbrot.c.o
  /Users/rkeli/Desktop/fractol/libft/get_next_line.h
  /Users/rkeli/Desktop/fractol/libft/libft.h
  /Users/rkeli/Desktop/fractol/mandelbrot.c
+CMakeFiles/fractol.dir/opncl.c.o
+ ../minilibx_macos/mlx.h
+ /Users/rkeli/Desktop/fractol/fractol.h
+ /Users/rkeli/Desktop/fractol/libft/get_next_line.h
+ /Users/rkeli/Desktop/fractol/libft/libft.h
+ /Users/rkeli/Desktop/fractol/opncl.c

@@ -76,6 +76,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/rkeli/Desktop/fractol/libft/get_next_line.c" "/Users/rkeli/Desktop/fractol/cmake-build-debug/CMakeFiles/fractol.dir/libft/get_next_line.c.o"
   "/Users/rkeli/Desktop/fractol/main.c" "/Users/rkeli/Desktop/fractol/cmake-build-debug/CMakeFiles/fractol.dir/main.c.o"
   "/Users/rkeli/Desktop/fractol/mandelbrot.c" "/Users/rkeli/Desktop/fractol/cmake-build-debug/CMakeFiles/fractol.dir/mandelbrot.c.o"
+  "/Users/rkeli/Desktop/fractol/opncl.c" "/Users/rkeli/Desktop/fractol/cmake-build-debug/CMakeFiles/fractol.dir/opncl.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 

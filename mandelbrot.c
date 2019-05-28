@@ -6,7 +6,7 @@
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 18:07:43 by rkeli             #+#    #+#             */
-/*   Updated: 2019/05/27 21:36:25 by rkeli            ###   ########.fr       */
+/*   Updated: 2019/05/28 19:17:10 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,9 @@ static void		mandelbrot_calc(t_fractol *fractol) // TODO Добавь ивент
 //			/ (fractol->event.zoom * 1 * WIDTH); // TODO Добавь ивент на движение по мапе + отцентровка
 //	fractol->calc.c_i = (fractol->calc.y * 1.5 - HEIGHT / 1.5)
 //			/ (fractol->event.zoom * 1 * HEIGHT);
-	jump(fractol);
+	//jump(fractol);
+	fractol->event.mve_horiz = -((WIDTH / 2) * fractol->event.zoom) + fractol->event.horiz;
+	fractol->event.mve_vertic =  -((HEIGHT / 2) * fractol->event.zoom) + fractol->event.vertic;
 	fractol->calc.c_r = (fractol->calc.x * fractol->event.zoom) + fractol->event.mve_horiz;
 	fractol->calc.c_i = fractol->calc.y * fractol->event.zoom + fractol->event.mve_vertic;
 	fractol->calc.z_i = 0;

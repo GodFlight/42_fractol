@@ -311,6 +311,9 @@
 		<Unit filename="/Users/rkeli/Desktop/fractol/mandelbrot.c">
 			<Option target="fractol"/>
 		</Unit>
+		<Unit filename="/Users/rkeli/Desktop/fractol/opncl.c">
+			<Option target="fractol"/>
+		</Unit>
 		<Unit filename="/Users/rkeli/Desktop/fractol/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

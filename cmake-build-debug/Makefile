@@ -2067,6 +2067,33 @@ mandelbrot.c.s:
 	$(MAKE) -f CMakeFiles/fractol.dir/build.make CMakeFiles/fractol.dir/mandelbrot.c.s
 .PHONY : mandelbrot.c.s
 
+opncl.o: opncl.c.o
+
+.PHONY : opncl.o
+
+# target to build an object file
+opncl.c.o:
+	$(MAKE) -f CMakeFiles/fractol.dir/build.make CMakeFiles/fractol.dir/opncl.c.o
+.PHONY : opncl.c.o
+
+opncl.i: opncl.c.i
+
+.PHONY : opncl.i
+
+# target to preprocess a source file
+opncl.c.i:
+	$(MAKE) -f CMakeFiles/fractol.dir/build.make CMakeFiles/fractol.dir/opncl.c.i
+.PHONY : opncl.c.i
+
+opncl.s: opncl.c.s
+
+.PHONY : opncl.s
+
+# target to generate assembly for a file
+opncl.c.s:
+	$(MAKE) -f CMakeFiles/fractol.dir/build.make CMakeFiles/fractol.dir/opncl.c.s
+.PHONY : opncl.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -2292,6 +2319,9 @@ help:
 	@echo "... mandelbrot.o"
 	@echo "... mandelbrot.i"
 	@echo "... mandelbrot.s"
+	@echo "... opncl.o"
+	@echo "... opncl.i"
+	@echo "... opncl.s"
 .PHONY : help
 
 

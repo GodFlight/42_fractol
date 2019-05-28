@@ -81,11 +81,13 @@ add_executable(fractol
         event.c
         burningship.c
         carpet.c
-        julia.c)
+        julia.c
+        opncl.c)
 #add_executable(fractol main.c fractol.h libft/libft.a libft/ft_abs.c libft/ft_swap.c libft/ft_atoi.c libft/get_next_line.c libft/ft_strchr.c libft/ft_strdel.c libft/ft_strdup.c libft/ft_strjoin.c libft/ft_strsub.c libft/ft_strnew.c libft/ft_updt.c libft/ft_bzero.c libft/ft_strlen.c libft/ft_atoi_base.c libft/ft_memdel.c mandelbrot.c libft/ft_strcmp.c libft/ft_memcpy.c)
 
 target_link_libraries(fractol
         "-framework AppKit"
         "-framework OpenGL"
+        "-framework OpenCL"
         mlx
         )

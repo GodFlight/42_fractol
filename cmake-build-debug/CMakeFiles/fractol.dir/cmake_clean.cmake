@@ -71,6 +71,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/fractol.dir/burningship.c.o"
   "CMakeFiles/fractol.dir/carpet.c.o"
   "CMakeFiles/fractol.dir/julia.c.o"
+  "CMakeFiles/fractol.dir/opncl.c.o"
   "fractol.pdb"
   "fractol"
 )

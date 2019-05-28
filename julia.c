@@ -6,7 +6,7 @@
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/25 14:14:38 by rkeli             #+#    #+#             */
-/*   Updated: 2019/05/25 18:00:01 by rkeli            ###   ########.fr       */
+/*   Updated: 2019/05/28 18:08:54 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static void		julia_calc(t_fractol *fractol)
 		tmp = fractol->calc.c_i;
 		fractol->calc.c_i = fractol->calc.c_i * fractol->calc.c_i
 				- fractol->calc.c_r
-				* fractol->calc.c_r + fractol->event.mouse_move;
+				* fractol->calc.c_r + fractol->event.mouse_move_x;
 		fractol->calc.c_r = 2.0 * tmp * fractol->calc.c_r
-				+ fractol->event.mouse_move;
+				+ fractol->event.mouse_move_y;
 		fractol->calc.it++;
 	}
 	if (fractol->calc.it == fractol->event.it_max)
