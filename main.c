@@ -6,7 +6,7 @@
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 15:21:44 by rkeli             #+#    #+#             */
-/*   Updated: 2019/05/29 01:20:54 by rkeli            ###   ########.fr       */
+/*   Updated: 2019/06/03 22:09:00 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void		change_fractol(char *argv, t_fractol *fractol)
 	else
 	{
 		ft_putstr("usage: ./fractol target_name\n");
-		ft_putstr("Available: ""mandelbrot"", ""julia"", ""carpet"", ""burningship""\n");
+		ft_putstr("target_name: mandelbrot, julia, carpet, burningship\n");
 		exit (32);
 	}
 }
@@ -47,16 +47,19 @@ void			img_init(t_fractol *fractol)
 
 void	fractol_init(t_fractol *fractol)
 {
+	fractol->event.stop_jl = 1;
 	fractol->event.it_max = 50;
-	fractol->event.zoom = 0.02;
+	fractol->event.zoom = 0.002;
 	fractol->jflg = 0;
 	fractol->event.vertic = 0;
 	fractol->event.horiz = 0;
 	fractol->event.mouse_move_x = 0;
 	fractol->event.mouse_move_y = 0;
-//	fractol->event.mve_horiz = -((WIDTH / 2) * fractol->event.zoom) + fractol->event.horiz;
-//	fractol->event.mve_vertic = -((HEIGHT / 2) * fractol->event.zoom) + fractol->event.vertic;
+	fractol->event.mve_horiz = -((WIDTH / 2) * fractol->event.zoom) + fractol->event.horiz;;
+	fractol->event.mve_vertic = -((HEIGHT / 2) * fractol->event.zoom) + fractol->event.vertic;
 	fractol->event.color = 3;
+	fractol->event.jl_move_x = 0;
+	fractol->event.jl_move_y = 0;
 	fractol->event.plus_it = 0;
 	fractol->calc.z_i = 0;
 	fractol->calc.z_r = 0;
@@ -75,19 +78,17 @@ int		main(int argc, char **argv)
 	fractol = NULL;
 	if (!(fractol = malloc(sizeof(t_fractol))))
 		exit (30);
-//	change_fractol(argv[1], fractol);
+	change_fractol(argv[1], fractol);
 	fractol_init(fractol);
 	img_init(fractol);
 //	render(fractol);
 //	mandelbrot(fractol);
-//	mlx_hook(fractol->win, 12, 0 ,&mouse_move_event, fractol);
-	mlx_hook(fractol->win, 17 , 0, &ft_close, NULL);
+	mlx_hook(fractol->win, 17, 0, &ft_close, NULL);
 	mlx_hook(fractol->win, 2, 0, &key_event, fractol);
-//	mlx_hook(fractol->win, 6, 0, &mouse_move_event, fractol);
-	//mlx_mouse_hook(fractol->win, &mouse_move_event, fractol);
+	mlx_hook(fractol->win, 4, 0, &mouse_event, fractol);
+	mlx_hook(fractol->win, 6, 0, &mouse_move, fractol);
 	create_cl(fractol);
 	run_cl(fractol);
-
 	mlx_loop(fractol->mlx);
 	return (0);
 }

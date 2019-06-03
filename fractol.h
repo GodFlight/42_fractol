@@ -6,7 +6,7 @@
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 15:16:27 by rkeli             #+#    #+#             */
-/*   Updated: 2019/05/28 23:51:22 by rkeli            ###   ########.fr       */
+/*   Updated: 2019/06/03 22:36:55 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <complex.h>
 # define HEIGHT 1315
 # define WIDTH 2560
+//# define HEIGHT 1000
+//# define WIDTH 1000
 
 typedef enum
 {
@@ -41,7 +43,8 @@ typedef enum
 	RESET = 15,
 	JUMP = 38,
 	ITERATE_PLUS = 67,
-	ITERATE_MUNIS = 75
+	ITERATE_MUNIS = 75,
+	SPACE = 49
 }	t_keycode;
 
 typedef struct		s_img
@@ -58,24 +61,27 @@ typedef struct 		s_fractol_calc
 	int				x;
 	int				y;
 	int				it;
-	double		c_r;
-	double		c_i;
-	double		z_r;
-	double		z_i;
+	double			c_r;
+	double			c_i;
+	double			z_r;
+	double			z_i;
 }					t_fractol_calc;
 
 typedef struct 		s_event
 {
-	double			mouse_move_x;
-	double			mouse_move_y;
-	double 			zoom;
+	int				mouse_move_x;
+	int				mouse_move_y;
 	int 			color;
 	int 			it_max;
 	int 			plus_it;
+	int 			stop_jl;
+	double 			zoom;
 	double			mve_horiz;
 	double 			mve_vertic;
 	double 			horiz;
 	double 			vertic;
+	double 			jl_move_x;
+	double 			jl_move_y;
 }					t_event;
 
 typedef struct		s_cl
@@ -116,8 +122,11 @@ void			render(t_fractol *fractol);
 int				ft_rgb_to_hex(int r, int g, int b);
 int				ft_close(void *param);
 int 			key_event(int keycode, void *param);
-void 			mouse_move_event( int x, int y, void *param);
+void 			mouse_event(int mousecode, int x, int y, void *param);
+void			mouse_move(int x, int y, void *param);
 void			create_cl(t_fractol *data);
-void		run_cl(t_fractol *data);
+void			run_cl(t_fractol *data);
+//void			zoom_out(t_fractol *fractol, int x, int y);
+//void			zoom_into(t_fractol *fractol, int x, int y);
 
 #endif

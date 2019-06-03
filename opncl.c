@@ -6,7 +6,7 @@
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 19:16:58 by rkeli             #+#    #+#             */
-/*   Updated: 2019/05/29 00:05:18 by rkeli            ###   ########.fr       */
+/*   Updated: 2019/06/03 15:58:59 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void		run_cl(t_fractol *data)
 	double dmem[32];
 
 	kernel_num = WIDTH * HEIGHT;
+	mem[5] = WIDTH;
+	mem[6] = HEIGHT;
 	mem[0] = data->calc.x;
 	mem[1] = data->calc.y;
 	mem[2] = data->calc.it;
@@ -55,10 +57,15 @@ void		run_cl(t_fractol *data)
 	dmem[2] = data->calc.z_r;
 	dmem[3] = data->calc.z_i;
 	dmem[4] = data->event.mve_horiz;
+//	dmem[4] = -((WIDTH / 2) * data->event.zoom) + data->event.horiz;
 	dmem[5] = data->event.mve_vertic;
+//	dmem[5] =  -((HEIGHT / 2) * data->event.zoom) + data->event.vertic;
 	dmem[6] = data->event.zoom;
 	dmem[7] = data->event.horiz;
 	dmem[8] = data->event.vertic;
+	dmem[9] = data->event.jl_move_x;
+	dmem[10] = data->event.jl_move_y;
+
 	ret = clEnqueueWriteBuffer(data->cl.queue, data->cl.int_mem, CL_TRUE, 0, sizeof(int) * 32, mem, 0, NULL, NULL);
 	ret = clEnqueueWriteBuffer(data->cl.queue, data->cl.double_mem, CL_TRUE, 0, sizeof(double) * 32, dmem, 0, NULL, NULL);
 	ret = clEnqueueNDRangeKernel(data->cl.queue, data->cl.kernel, 1, NULL, &kernel_num, NULL, 0, NULL, NULL);
@@ -77,7 +84,7 @@ void		create_cl(t_fractol *data)
 	ret = clGetDeviceIDs(data->cl.platform_id, CL_DEVICE_TYPE_GPU, 1, &data->cl.device_id, &data->cl.ret_num_devices);
 	data->cl.context = clCreateContext(NULL, 1, &data->cl.device_id, NULL, NULL, &ret);
 	data->cl.queue = clCreateCommandQueue(data->cl.context, data->cl.device_id, 0, &ret);
-	kernel_str = read__file("/Users/rkeli/Desktop/fractol/test.cl");
+	kernel_str = read__file("./test.cl");
 	kernel_len = ft_strlen(kernel_str);
 	data->cl.program = clCreateProgramWithSource(data->cl.context, 1, (const char**)&kernel_str, &kernel_len, &ret);
 	ret = clBuildProgram(data->cl.program, 1, &data->cl.device_id, NULL, NULL, NULL);
