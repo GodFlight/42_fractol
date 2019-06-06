@@ -6,7 +6,7 @@
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 12:32:02 by rkeli             #+#    #+#             */
-/*   Updated: 2019/05/11 19:11:58 by rkeli            ###   ########.fr       */
+/*   Updated: 2019/06/06 15:44:56 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,6 @@ typedef struct		s_list
 
 typedef struct		s_vector
 {
-
-
 	void			*content;
 	struct s_vector	*next;
 	struct s_vector *prev;
