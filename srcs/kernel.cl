@@ -32,6 +32,7 @@ typedef struct		s_fractol
 	double 			vertic;
 	double 			jl_move_x;
 	double 			jl_move_y;
+	double3			rgb;
 }					t_fractol;
 
 int			ft_rgb_to_hex(int r, int g, int b)
@@ -50,9 +51,11 @@ void		put_pixel_img(t_fractol data, int x, int y, __global int *image, int color
 	if (x >= 0 && x < data.WIDTH && y >= 0 && y < data.HEIGHT)
 		image[x + data.WIDTH * y] = color;
 }
+
 /*
 **	Carpet fractal
 */
+
 void		carpet(t_fractol data, __global int *image)
 {
 	int		i;
@@ -86,6 +89,7 @@ void 		burningship(t_fractol data, __global int *image)
 	double tmp;
 	double z_r;
 	double z_i;
+	double x;
 
 	data.c_r = data.x * data.zoom + data.mve_horiz + data.horiz;
 	data.c_i = data.y * data.zoom + data.mve_vertic + data.vertic;
@@ -99,10 +103,88 @@ void 		burningship(t_fractol data, __global int *image)
 		z_i = 2 * fabs(tmp * z_i) + data.c_i;
 		data.it++;
 	}
+	if(z_i * z_i + z_r * z_r != 1)
+		x = (double)data.it - log2(log2(z_r * z_r + z_i * z_i)) + 4.0;
+	else
+		x = (double)data.it + 4.0;
+	double3 bla = 256 * (0.5 + 0.5 * cos((3.0 + x * 0.15 + (double3){data.rgb.x, data.rgb.y, data.rgb.z})));
 	if (data.it >= data.it_max)
 		put_pixel_img(data, data.x, data.y, image, 0x000000);
 	else
-		put_pixel_img(data, data.x, data.y, image, ft_rgb_to_hex(255 - 13 * data.it * 0.7,  255 -  9 * data.it * 0.85,  255 - 4 * data.it));
+		put_pixel_img(data, data.x, data.y, image, (((int) (bla.x)) << 16) | ((int) (bla.y)) << 8 | ((int) (bla.z)));
+}
+
+/*
+** Mandelbrot + julia set
+*/
+
+void 		m_j_set(t_fractol data, __global int *image)
+{
+	double	tmp;
+	double 	x;
+
+	data.c_r = data.x * data.zoom + data.mve_horiz + data.horiz;
+	data.c_i = data.y * data.zoom + data.mve_vertic + data.vertic;
+	data.z_i = 0;
+	data.z_r = 0;
+	data.it = -100;
+	while (data.z_i * data.z_i + data.z_r * data.z_r <= 256 && data.it < data.it_max)
+	{
+		tmp = data.z_r;
+		data.z_r = tmp * tmp - data.z_i * data.z_i + data.c_r;
+		data.z_i = 2 * tmp * data.z_i + data.c_i;
+		tmp = data.c_i;
+		data.c_i = data.c_i * data.c_i - data.c_r * data.c_r + data.jl_move_x;
+		data.c_r = 2.0 * tmp * data.c_r + data.jl_move_y;
+		data.it++;
+	}
+	if(data.z_i * data.z_i + data.z_r * data.z_r != 1)
+		x = (double)data.it - log2(log2(data.z_r * data.z_r + data.z_i * data.z_i)) + 4.0;
+	else
+		x = (double)data.it + 4.0;
+	double3 bla = 256 * (0.5 + 0.5 * cos((3.0 + x * 0.15 + (double3){data.rgb.x, data.rgb.y, data.rgb.z})));
+	if (data.it >= data.it_max)
+		put_pixel_img(data, data.x, data.y, image, 0x000000);
+	else
+		put_pixel_img(data, data.x, data.y, image, (((int) (bla.x)) << 16) | ((int) (bla.y)) << 8 | ((int) (bla.z)));
+}
+
+/*
+**	Mandelbrot + julia + burningship set
+*/
+
+void 		m_j_b_set(t_fractol data, __global int *image)
+{
+	double	tmp;
+	double 	x;
+
+	data.c_r = data.x * data.zoom + data.mve_horiz + data.horiz;
+	data.c_i = data.y * data.zoom + data.mve_vertic + data.vertic;
+	data.z_i = 0;
+	data.z_r = 0;
+	data.it = -100;
+	while (data.z_i * data.z_i + data.z_r * data.z_r <= 256 && data.it < data.it_max)
+	{
+		tmp = data.z_r;
+		data.z_r = tmp * tmp - data.z_i * data.z_i + data.c_r;
+		data.z_i = 2 * tmp * data.z_i + data.c_i;
+		tmp = data.c_i;
+		data.c_i = data.c_i * data.c_i - data.c_r * data.c_r + data.jl_move_x;
+		data.c_r = 2.0 * tmp * data.c_r + data.jl_move_y;
+		tmp = data.z_r;
+		data.z_r = fabs(tmp * tmp) - data.z_i * data.z_i + data.c_r;
+		data.z_i = 2 * fabs(tmp * data.z_i) + data.c_i;
+		data.it++;
+	}
+	if(data.z_i * data.z_i + data.z_r * data.z_r != 1)
+		x = (double)data.it - log2(log2(data.z_r * data.z_r + data.z_i * data.z_i)) + 4.0;
+	else
+		x = (double)data.it + 4.0;
+	double3 bla = 256 * (0.5 + 0.5 * cos((3.0 + x * 0.15 + (double3){data.rgb.x, data.rgb.y, data.rgb.z})));
+	if (data.it >= data.it_max)
+		put_pixel_img(data, data.x, data.y, image, 0x000000);
+	else
+		put_pixel_img(data, data.x, data.y, image, (((int) (bla.x)) << 16) | ((int) (bla.y)) << 8 | ((int) (bla.z)));
 }
 
 /*
@@ -111,32 +193,43 @@ void 		burningship(t_fractol data, __global int *image)
 
 void 		mandelbrot(t_fractol data, __global int *image)
 {
-	double tmp;
+	double	tmp;
+	double 	x;
 
 	data.c_r = data.x * data.zoom + data.mve_horiz + data.horiz;
 	data.c_i = data.y * data.zoom + data.mve_vertic + data.vertic;
 	data.z_i = 0;
 	data.z_r = 0;
-	data.it = -100 + data.plus_it;
-	while (data.z_i * data.z_i + data.z_r * data.z_r <= 4 && data.it < data.it_max)
+	data.it = -100;
+	while (data.z_i * data.z_i + data.z_r * data.z_r <= 256 && data.it < data.it_max)
 	{
 		tmp = data.z_r;
 		data.z_r = tmp * tmp - data.z_i * data.z_i + data.c_r;
 		data.z_i = 2 * tmp * data.z_i + data.c_i;
 		data.it++;
 	}
+	if(data.z_i * data.z_i + data.z_r * data.z_r != 1)
+		x = (double)data.it - log2(log2(data.z_r * data.z_r + data.z_i * data.z_i)) + 4.0;
+	else
+		x = (double)data.it + 4.0;
+	double3 bla = 256 * (0.5 + 0.5 * cos((3.0 + x * 0.15 + (double3){data.rgb.x, data.rgb.y, data.rgb.z})));
 	if (data.it >= data.it_max)
 		put_pixel_img(data, data.x, data.y, image, 0x000000);
 	else
-		put_pixel_img(data, data.x, data.y, image, ft_rgb_to_hex(/*255 - */data.it * 0.007,  255 -  9 * data.it * 0.85,  255 - 4 * data.it));
+		put_pixel_img(data, data.x, data.y, image, (((int) (bla.x)) << 16) | ((int) (bla.y)) << 8 | ((int) (bla.z)));
 }
 
 void 		julia(t_fractol data, __global int *image)
 {
 	double	tmp;
+	double	x;
+	double z_r;
+	double z_i;
 
 	data.c_r = data.x * data.zoom + data.mve_horiz + data.horiz;
 	data.c_i = data.y * data.zoom + data.mve_vertic + data.vertic;
+	z_r = 0;
+	z_i = 0;
 	data.it = -200;
 	while (data.c_i * data.c_i + data.c_r * data.c_r <= 4 && data.it < data.it_max)
 	{
@@ -145,10 +238,15 @@ void 		julia(t_fractol data, __global int *image)
 		data.c_r = 2.0 * tmp * data.c_r + data.jl_move_y;
 		data.it++;
 	}
+	if(data.c_i * data.c_i + data.c_r * data.c_r != 1)
+		x = (double)data.it - log2(log2(data.c_r * data.c_r + data.c_i * data.c_i)) + 4.0;
+	else
+		x = (double)data.it + 4.0;
+	double3 bla = 256 * (0.5 + 0.5 * cos((3.0 + x * 0.15 + (double3){data.rgb.x, data.rgb.y, data.rgb.z})));
 	if (data.it >= data.it_max)
 		put_pixel_img(data, data.x, data.y, image, 0x000000);
 	else
-		put_pixel_img(data, data.x, data.y, image, ft_rgb_to_hex(255 - 13 * data.it * 0.005,  255 - 9 * data.it * 0.15,  255 - 4 * data.it));
+		put_pixel_img(data, data.x, data.y, image, (((int) (bla.x)) << 16) | ((int) (bla.y)) << 8 | ((int) (bla.z)));
 }
 
 static void	render(t_fractol data, __global int *image, int flg)
@@ -158,7 +256,9 @@ static void	render(t_fractol data, __global int *image, int flg)
 	else if (flg == 2)
 		julia(data, image);
 	else if (flg == 3)
-		carpet(data, image);
+		m_j_set(data, image);
+	else if (flg == 4)
+		m_j_b_set(data, image);
 	else
 		burningship(data, image);
 }
@@ -189,5 +289,6 @@ __kernel void	test(__global int *int_mem, __global double *double_mem, __global 
 	data.vertic = double_mem[8];
 	data.jl_move_x = double_mem[9];
 	data.jl_move_y = double_mem[10];
+	data.rgb = (double3){double_mem[11], double_mem[12], double_mem[13]};
 	render(data, image, flg);
 }
