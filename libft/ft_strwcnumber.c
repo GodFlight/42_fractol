@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strwcnumber.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/21 23:17:41 by rkeli             #+#    #+#             */
-/*   Updated: 2019/08/21 23:17:41 by rkeli            ###   ########.fr       */
+/*   Created: 2019/08/21 23:22:25 by rkeli             #+#    #+#             */
+/*   Updated: 2019/08/21 23:22:25 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
 
-void	ft_putstr(char const *s)
+size_t		ft_strwcnumber(const char *s, int c)
 {
-	size_t i;
+	size_t a;
 
+	a = 0;
 	if (!s)
-		return ;
-	i = 0;
-	while (s[i] != '\0')
+		return (0);
+	while (*s == (unsigned char)c)
+		s++;
+	while (*s)
 	{
-		write(1, &s[i], 1);
-		i++;
+		a++;
+		while (*s != (unsigned char)c && *s != '\0')
+			s++;
+		while (*s == (unsigned char)c)
+			s++;
+		if (*s == '\0')
+			return (a);
 	}
+	return (0);
 }

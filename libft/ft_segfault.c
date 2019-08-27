@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_segfault.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbecker <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/21 23:17:41 by rkeli             #+#    #+#             */
-/*   Updated: 2019/08/21 23:17:41 by rkeli            ###   ########.fr       */
+/*   Created: 2019/08/19 04:07:16 by sbecker           #+#    #+#             */
+/*   Updated: 2019/08/19 04:09:01 by sbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putstr(char const *s)
+void	ft_segfault(void)
 {
-	size_t i;
-
-	if (!s)
-		return ;
-	i = 0;
-	while (s[i] != '\0')
-	{
-		write(1, &s[i], 1);
-		i++;
-	}
+	ft_segfault();
 }

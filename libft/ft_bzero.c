@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/03 13:14:14 by rkeli             #+#    #+#             */
-/*   Updated: 2019/06/06 22:31:40 by rkeli            ###   ########.fr       */
+/*   Created: 2019/08/21 23:12:42 by rkeli             #+#    #+#             */
+/*   Updated: 2019/08/21 23:12:42 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,12 @@
 
 void	*ft_bzero(void *s, size_t n)
 {
-	int		i;
 	char	*s1;
+	size_t	i;
 
-	i = 0;
+	i = -1;
 	s1 = (char*)s;
-	if (n == 0)
-		return (0);
-	while (n-- > 0)
-	{
-		s1[i] = '\0';
-		i++;
-	}
+	while (++i < n)
+		s1[i] = 0;
 	return ((void*)s);
 }

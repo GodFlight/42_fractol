@@ -6,7 +6,7 @@
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 12:32:02 by rkeli             #+#    #+#             */
-/*   Updated: 2019/06/06 22:31:40 by rkeli            ###   ########.fr       */
+/*   Updated: 2019/08/19 19:04:16 by sbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include "get_next_line.h"
 # define ABS(Value) ((Value < 0) ? -(Value) : (Value))
 # define L_MAX 9223372036854775807L
+
+# define HASH_P		31
+# define HASH_M		1000000009
 
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 size_t				ft_strlen(const char *s);
@@ -72,6 +75,12 @@ char				**ft_strsplit(char const *s, char c);
 char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strnstr(const char *haystack,
 						const char *needle, size_t len);
+size_t				ft_strwcnumber(const char *s, int c);
+int					ft_isstn(char c);
+int					ft_strhash(const char *str);
+void				ft_clear_double_pointer(void **arr, int size);
+int					*quick_sort(float *arr, int size);
+void				ft_segfault();
 
 typedef struct		s_list
 {
@@ -98,7 +107,9 @@ void				ft_lstnormdel(t_list *alst);
 void				ft_lstnormdelone(t_list *alst);
 char				*ft_updt(char *str, char *update);
 void				ft_swap(int *a, int *b);
+void				ft_fswap(float *a, float *b);
 void				ft_sort_bubl(int ac, char **av);
 int					ft_abs(int a);
+void				ft_segfault(void);
 
 #endif

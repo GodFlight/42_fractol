@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strhash.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
+/*   By: edraugr- <edraugr-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/21 23:17:41 by rkeli             #+#    #+#             */
-/*   Updated: 2019/08/21 23:17:41 by rkeli            ###   ########.fr       */
+/*   Created: 2019/05/24 18:51:06 by sbednar           #+#    #+#             */
+/*   Updated: 2019/05/29 18:33:50 by edraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-void	ft_putstr(char const *s)
+int	ft_strhash(const char *str)
 {
-	size_t i;
+	int	res;
+	int	p;
+	int	i;
 
-	if (!s)
-		return ;
-	i = 0;
-	while (s[i] != '\0')
+	res = 0;
+	p = 1;
+	i = -1;
+	while (str[++i])
 	{
-		write(1, &s[i], 1);
-		i++;
+		res = (res + (str[i] - 'a') * p) % HASH_M;
+		p = (p * HASH_P) % HASH_M;
 	}
+	return (res);
 }
