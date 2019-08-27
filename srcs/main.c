@@ -6,7 +6,7 @@
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 15:21:44 by rkeli             #+#    #+#             */
-/*   Updated: 2019/06/06 22:31:40 by rkeli            ###   ########.fr       */
+/*   Updated: 2019/08/25 23:30:59 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void				img_init(t_fractol *fractol)
 	fractol->img.data = (int*)mlx_get_data_addr(fractol->img.img,
 			&fractol->img.bpp, &fractol->img.line_size, &fractol->img.endian);
 	fractol->img.bpp /= 8;
+
 }
 
 void				fractol_init(t_fractol *fractol)
@@ -65,25 +66,27 @@ void				fractol_init(t_fractol *fractol)
 	fractol->calc.c_i = 0;
 	fractol->calc.c_i = 0;
 	fractol->str_color = 0xFFFFFF;
+	fractol->event.r = -3.617692;
+	fractol->event.g = -4.471539;
+	fractol->event.b = -11.271538;
 }
 
 int					main(int argc, char **argv)
 {
 	t_fractol *fractol;
 
-	if (argc == 1)
+	if (argc == 1 && argv)
 	{
 		ft_putstr("usage: ./fractol target_name\n");
 		ft_putstr("target_name: mandelbrot, julia, carpet, burningship\n");
 		exit(32);
 	}
-	fractol = NULL;
 	if (!(fractol = malloc(sizeof(t_fractol))))
 		exit(30);
 	fractol_init(fractol);
 	fractol->mlx = mlx_init();
-	fractol->win = mlx_new_window(fractol->mlx, WIDTH, HEIGHT, "Fractol");
 	img_init(fractol);
+	fractol->win = mlx_new_window(fractol->mlx, WIDTH, HEIGHT, "Fractol");
 	change_fractol(argv[1], fractol);
 	create_cl(fractol);
 	run_cl(fractol);
