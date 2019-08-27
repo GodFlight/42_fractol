@@ -6,7 +6,7 @@
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 19:16:58 by rkeli             #+#    #+#             */
-/*   Updated: 2019/06/06 22:31:40 by rkeli            ###   ########.fr       */
+/*   Updated: 2019/08/27 20:21:48 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char			*read__file(char *path)
 	return (buff);
 }
 
-static void		ft_costil(t_fractol *data, int *mem, double *dmem)
+static void		init_data(t_fractol *data, int *mem, double *dmem)
 {
 	mem[5] = WIDTH;
 	mem[6] = HEIGHT;
@@ -49,6 +49,9 @@ static void		ft_costil(t_fractol *data, int *mem, double *dmem)
 	dmem[8] = data->event.vertic;
 	dmem[9] = data->event.jl_move_x;
 	dmem[10] = data->event.jl_move_y;
+	dmem[11] = data->event.r;
+	dmem[12] = data->event.g;
+	dmem[13] = data->event.b;
 }
 
 void			run_cl(t_fractol *data)
@@ -59,7 +62,7 @@ void			run_cl(t_fractol *data)
 	double		dmem[32];
 
 	kernel_num = WIDTH * HEIGHT;
-	ft_costil(data, mem, dmem);
+	init_data(data, mem, dmem);
 	ret = clEnqueueWriteBuffer(data->cl.queue, data->cl.int_mem,
 			CL_TRUE, 0, sizeof(int) * 32, mem, 0, NULL, NULL);
 	ret = clEnqueueWriteBuffer(data->cl.queue, data->cl.double_mem,
@@ -70,22 +73,6 @@ void			run_cl(t_fractol *data)
 			0, sizeof(int) * WIDTH * HEIGHT, data->img.data, 0, NULL, NULL);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	string_output(data);
-}
-
-static void		ft_costil_two(t_fractol *data)
-{
-	int			ret;
-
-	data->cl.int_mem = clCreateBuffer(data->cl.context, CL_MEM_READ_WRITE,
-			sizeof(int) * 32, NULL, &ret);
-	data->cl.mem_img = clCreateBuffer(data->cl.context, CL_MEM_READ_WRITE,
-			sizeof(int) * WIDTH * HEIGHT, NULL, &ret);
-	data->cl.double_mem = clCreateBuffer(data->cl.context, CL_MEM_READ_WRITE,
-			sizeof(double) * 32, NULL, &ret);
-	ret = clSetKernelArg(data->cl.kernel, 0, sizeof(cl_mem), &data->cl.int_mem);
-	ret = clSetKernelArg(data->cl.kernel, 1, sizeof(cl_mem),
-			&data->cl.double_mem);
-	ret = clSetKernelArg(data->cl.kernel, 2, sizeof(cl_mem), &data->cl.mem_img);
 }
 
 void			create_cl(t_fractol *data)
@@ -110,5 +97,14 @@ void			create_cl(t_fractol *data)
 	ret = clBuildProgram(data->cl.program, 1, &data->cl.device_id, NULL,
 			NULL, NULL);
 	data->cl.kernel = clCreateKernel(data->cl.program, "test", &ret);
-	ft_costil_two(data);
+	data->cl.int_mem = clCreateBuffer(data->cl.context, CL_MEM_READ_WRITE,
+									  sizeof(int) * 32, NULL, &ret);
+	data->cl.mem_img = clCreateBuffer(data->cl.context, CL_MEM_READ_WRITE,
+									  sizeof(int) * WIDTH * HEIGHT, NULL, &ret);
+	data->cl.double_mem = clCreateBuffer(data->cl.context, CL_MEM_READ_WRITE,
+										 sizeof(double) * 32, NULL, &ret);
+	ret = clSetKernelArg(data->cl.kernel, 0, sizeof(cl_mem), &data->cl.int_mem);
+	ret = clSetKernelArg(data->cl.kernel, 1, sizeof(cl_mem),
+						 &data->cl.double_mem);
+	ret = clSetKernelArg(data->cl.kernel, 2, sizeof(cl_mem), &data->cl.mem_img);
 }
