@@ -6,7 +6,7 @@
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 15:16:27 by rkeli             #+#    #+#             */
-/*   Updated: 2019/06/06 22:31:40 by rkeli            ###   ########.fr       */
+/*   Updated: 2019/08/25 19:05:20 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@
 # include <stdlib.h>
 # include <OpenCL/opencl.h>
 # include <complex.h>
+# include <stdlib.h>
 # define HEIGHT 1315
+//# define HEIGHT 1315 / 2
 # define WIDTH 2560
+//# define WIDTH 2560 / 2
 
 typedef enum
 {
@@ -37,6 +40,12 @@ typedef enum
 	ITERATE_PLUS = 67,
 	ITERATE_MUNIS = 75,
 	SPACE = 49,
+	RED_CHANEL_INCREMENT = 83,
+	GREEN_CHANEL_INCREMENT = 84,
+	BLUE_CHANEL_INCREMENT = 85,
+	RED_CHANEL_DECREMENT = 86,
+	GREEN_CHANEL_DECREMENT = 87,
+	BLUE_CHANEL_DECREMENT = 88
 }	t_keycode;
 
 typedef struct			s_img
@@ -73,6 +82,9 @@ typedef struct			s_event
 	double				vertic;
 	double				jl_move_x;
 	double				jl_move_y;
+	double 				r;
+	double 				g;
+	double 				b;
 }						t_event;
 
 typedef struct			s_cl
