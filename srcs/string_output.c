@@ -18,7 +18,7 @@ static void		o_str(t_fractol *fractol)
 			"Press 'PAGE DOWN' to set previous fractal");
 	mlx_string_put(fractol->mlx, fractol->win, 50, 250, fractol->str_color,
 			"Press 'R' to reset fractal");
-	if (fractol->flg == 2)
+	if (fractol->flg == 2 || fractol->flg == 3 || fractol->flg == 4)
 		mlx_string_put(fractol->mlx, fractol->win, 50, HEIGHT - 50,
 		fractol->str_color, "Press 'SPACE' to turn on or to turn off mouse");
 }
