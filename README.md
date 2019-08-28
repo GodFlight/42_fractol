@@ -5,7 +5,7 @@
 ![Image alt](https://github.com/GodFlight/42_fractol/raw/master/image/Mandelbrot%2BJulia.png)
 ![Image alt](https://github.com/GodFlight/42_fractol/raw/master/image/Mandl%2BJulia%2BBurningship.png)
 ![Image alt](https://github.com/GodFlight/42_fractol/raw/master/image/Burningship.png)
-Многопоточный рендеринг фракталов с использованием фреймворка **"OpenCL"** и графической библиотеки **"mlx"**.
+Многопоточный рендеринг фракталов с использованием фреймворка **"OpenCL"** и библиотеки для работы с OpenGL **"mlx"**.
 
 ## Что есть
 Рендеринг фракталов: mandelbrot, julia, burning ship, mandelbrot + julia, mandelbrot + julia + burning ship.  
