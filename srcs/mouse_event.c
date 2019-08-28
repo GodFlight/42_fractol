@@ -6,7 +6,7 @@
 /*   By: rkeli <rkeli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 18:07:00 by rkeli             #+#    #+#             */
-/*   Updated: 2019/08/27 16:53:59 by rkeli            ###   ########.fr       */
+/*   Updated: 2019/08/28 03:09:54 by rkeli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,14 @@ int				mouse_move(int x, int y, void *param)
 	int 		tmp_y;
 
 	fractol = (t_fractol*)param;
+	fractol->event.mouse_move_x = x;
+	fractol->event.mouse_move_y = y;
 	if (x > WIDTH || y > HEIGHT || x < 0 || y < 0)
+		return (0);
+	if (fractol->event.stop_jl != 0)
 		return (0);
 	tmp_x = x;
 	tmp_y = y;
-	if (fractol->event.stop_jl != 0)
-		return (0);
 	if (tmp_x > WIDTH / 2)
 		tmp_x = (WIDTH / 2) - (tmp_x - WIDTH / 2);
 	if (tmp_y > HEIGHT / 2)
