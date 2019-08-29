@@ -5,27 +5,27 @@
 ![Image alt](https://github.com/GodFlight/42_fractol/raw/master/image/Mandelbrot%2BJulia.png)
 ![Image alt](https://github.com/GodFlight/42_fractol/raw/master/image/Mandl%2BJulia%2BBurningship.png)
 ![Image alt](https://github.com/GodFlight/42_fractol/raw/master/image/Burningship.png)
-Многопоточный рендеринг фракталов с использованием фреймворка **"OpenCL"** и библиотеки для работы с OpenGL **"mlx"**.
+Multithreaded rendering of fractals with using the framework **"OpenCL"** and libraries for working with OpenGL **"mlx"**.
 
-## Что есть
-Рендеринг фракталов: mandelbrot, julia, burning ship, mandelbrot + julia, mandelbrot + julia + burning ship.  
-Гладкий градиент цвета.  
-Подсчет значений при помощи фреймвока **"OpenCL"**.  
+## Features
+ * Fractal rendering: mandelbrot, julia, burning ship, mandelbrot + julia, mandelbrot + julia + burning ship.  
+ * Smooth color gradient.  
+ * Counting Values with the framework **"OpenCL"**.  
 
-## Компиляция и запуск
-Запускается только на **OSX**.  
-Скомпилировать исполняемый файл при помощи `make`.  
-Запустить его с `./fractol [target_name]`. Возможные фракталы: `mandelbrot`, `julia`, `manjulia`, `mandjuliaburn`, `burningship`.  
+## Compilling and Launch
+Runs only on **OSX**.  
+Compile the executable with `make`.  
+Run it with `./fractol [target_name]`. Possible fractals: `mandelbrot`, `julia`, `manjulia`, `mandjuliaburn`, `burningship`.  
 
-## Управление
-`ESC` - закрыть программу.  
-`NUM`+`1`-`6` - Смена цветов.  
-`NUM`+`+`/`-`/`Вращение колеса мыши` - приближение/отдаление.  
-`UP` - перемещние фрактала вверх.  
-`DOWN` - перемещние фрактала вниз.  
-`RIGHT` - перемещение фрактала вправо.  
-`LEFT` - перемещение фрактала влево.  
-`PAGE UP` - смена фрактала.  
-`PAGE DOWN` - смена фрактала.  
-`SPACE` - включить/выключить вращение мыши *(только для julia, mandelbrot+julia, mandelbrot+julia+burningship)*.  
-`R` - перезапустить фрактал.
+## Controls
+`ESC` - Close the program.  
+`NUM`+`1`-`6` - Color change.  
+`NUM`+`+`/`-`/`Mouse wheel rotation` - zoom into/zoom out.  
+`UP` - Fractal movement up.  
+`DOWN` - Fractal movement down.  
+`RIGHT` - Fractal movement right.  
+`LEFT` - Fractal movement left.  
+`PAGE UP` - Fractal change.  
+`PAGE DOWN` - Fractal change.  
+`SPACE` - Turn on/off mouse rotation *(only for julia, mandelbrot+julia, mandelbrot+julia+burningship)*.  
+`R` - Restart fractal.
