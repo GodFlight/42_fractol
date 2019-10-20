@@ -91,9 +91,9 @@ void			create_cl(t_fractol *data)
 			0, &ret);
 	kernel_str = read__file("srcs/kernel.cl");
 	kernel_len = ft_strlen(kernel_str);
-	free(kernel_str);
 	data->cl.program = clCreateProgramWithSource(data->cl.context, 1,
 			(const char**)&kernel_str, &kernel_len, &ret);
+	free(kernel_str);
 	ret = clBuildProgram(data->cl.program, 1, &data->cl.device_id, NULL,
 			NULL, NULL);
 	data->cl.kernel = clCreateKernel(data->cl.program, "test", &ret);
